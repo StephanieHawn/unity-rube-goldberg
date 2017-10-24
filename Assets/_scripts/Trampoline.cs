@@ -8,7 +8,7 @@ public class Trampoline : MonoBehaviour {
     private void OnCollisionEnter(Collision col)
     {
 
-        if (col.gameObject.CompareTag("SpawnableBall"))
+        if (col.gameObject.CompareTag("Ball"))
         {
             Debug.Log("Hit");
             Debug.Log("The Ball is forced");
