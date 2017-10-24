@@ -20,6 +20,7 @@ public class RightHandInteraction : MonoBehaviour
     private bool hasSwipedLeft;
     private bool hasSwipedRight;
     public ObjectMenuManager objectMenuManager;
+    //public GameObject objMenu;
 
     // Use this for initialization
     void Start()
@@ -44,6 +45,8 @@ public class RightHandInteraction : MonoBehaviour
         //detect when our user is toucing the touchpad
         if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad))
         {
+            //objMenu.SetActive(true);
+
             touchCurrent = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
             //how much did the finger move this frame?
             distance = touchCurrent - touchLast;
@@ -76,6 +79,8 @@ public class RightHandInteraction : MonoBehaviour
         }
         if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Touchpad))
         {
+            //objMenu.SetActive(false);
+
             swipeSum = 0;
             touchCurrent = 0;
             touchLast = 0;
@@ -132,6 +137,7 @@ public class RightHandInteraction : MonoBehaviour
             }
             //Debug.Log("Collision occurred_Ball");
         }
+        /*
         if (col.gameObject.CompareTag("SpawnableBall"))
         {
 
@@ -145,6 +151,7 @@ public class RightHandInteraction : MonoBehaviour
             }
             //Debug.Log("Collision occurred_Ball");
         }
+        */
 
 
         if (col.gameObject.CompareTag("Throwable") || col.gameObject.CompareTag("Goal") || col.gameObject.CompareTag("Trampoline"))
