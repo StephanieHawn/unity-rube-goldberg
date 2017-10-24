@@ -1,4 +1,4 @@
-#Udacity - VR Nanodegree - Rube Golberg - Project 6
+# Udacity - VR Nanodegree - Rube Golberg - Project 6
 
 Advance through 4 levels of increasing difficulty by solving physics-based puzzles. Build Rube Goldberg contraptions to get the ball from the starting platform to the goal, collecting all of the stars along the way.
 
