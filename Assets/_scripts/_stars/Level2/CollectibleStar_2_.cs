@@ -6,12 +6,14 @@ public class CollectibleStar_2_ : MonoBehaviour {
 
     public GameObject particle;
     public static bool isTouched = false ;
-    
+
+    public AudioSource star;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
+            star.Play();
             //SteamVR_LoadLevel.Begin("Level-1-");
             Instantiate(particle, transform.position, Quaternion.identity);
             gameObject.SetActive(false);

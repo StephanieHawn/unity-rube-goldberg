@@ -7,19 +7,22 @@ using UnityEngine.SceneManagement;
 public class BallScript_2_ : MonoBehaviour {
     public static bool winState = false;
     //public SteamVR_LoadLevel loadLevel
-    public RightHandInteraction ballInstantiate;
+    //public RightHandInteraction ballInstantiate;
+    public GameObject ballInstantiate;
     public GameObject collectible;
     public GameObject collectible1;
     public GameObject resetBall;
-    
-    
+
+    public AudioSource ground;
 
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Ground"))
         {
+            ground.Play();
             Destroy(gameObject);
-            Instantiate(resetBall, ballInstantiate.ballPos, Quaternion.identity);
+            Instantiate(resetBall, ballInstantiate.transform.position, Quaternion.identity);
+            //Instantiate(resetBall, ballInstantiate.ballPos, Quaternion.identity);
             collectible.SetActive(true);
             collectible1.SetActive(true);
         }
