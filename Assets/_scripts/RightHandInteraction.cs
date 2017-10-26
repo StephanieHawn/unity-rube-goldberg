@@ -137,22 +137,6 @@ public class RightHandInteraction : MonoBehaviour
             }
             //Debug.Log("Collision occurred_Ball");
         }
-        /*
-        if (col.gameObject.CompareTag("SpawnableBall"))
-        {
-
-            if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
-            {
-                ThrowBall(col);
-            }
-            else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
-            {
-                GrabBall(col);
-            }
-            //Debug.Log("Collision occurred_Ball");
-        }
-        */
-
 
         if (col.gameObject.CompareTag("Throwable") || col.gameObject.CompareTag("Goal") || col.gameObject.CompareTag("Trampoline"))
         {

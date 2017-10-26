@@ -41,7 +41,9 @@ public class BallScript_0 : MonoBehaviour {
             else
             {
                 Destroy(gameObject);
-                SteamVR_LoadLevel.Begin("Level0");
+                Instantiate(resetBall, ballInstantiate.transform.position, Quaternion.identity);
+                collectible.SetActive(true);
+                //SteamVR_LoadLevel.Begin("Level0");
                 winState = false;
             }
         }

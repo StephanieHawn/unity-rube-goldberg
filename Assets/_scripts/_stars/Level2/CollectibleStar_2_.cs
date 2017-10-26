@@ -9,7 +9,12 @@ public class CollectibleStar_2_ : MonoBehaviour {
 
     public AudioSource star;
 
-    void OnTriggerEnter(Collider other)
+    private void Update()
+    {
+        gameObject.transform.Rotate(0, 90 * Time.deltaTime, 0);
+    }
+
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {

@@ -7,11 +7,18 @@ public class CollectibleStar_3_1 : MonoBehaviour {
     public GameObject particle;
     public static bool isTouched1 = false ;
 
+    public AudioSource star;
+
+    private void Update()
+    {
+        gameObject.transform.Rotate(0, 90 * Time.deltaTime, 0);
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
+            
             //SteamVR_LoadLevel.Begin("Level-1-");
             Instantiate(particle, transform.position, Quaternion.identity);
             gameObject.SetActive(false);

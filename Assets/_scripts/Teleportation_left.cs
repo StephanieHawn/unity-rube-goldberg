@@ -28,8 +28,8 @@ public class Teleportation_left : MonoBehaviour {
     void Update()
     {
         device = SteamVR_Controller.Input((int)trackedObj.index);
-        //if(!RightHandInteraction.holdingBall)
-        //{
+        if(!RightHandInteraction.holdingBall)
+        {
             if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
             {
                 laser.gameObject.SetActive(true);
@@ -79,7 +79,7 @@ public class Teleportation_left : MonoBehaviour {
                 //move instantly
                 player.transform.position = teleportLocation;
             }
-        //}
+        }
     }
 
 
