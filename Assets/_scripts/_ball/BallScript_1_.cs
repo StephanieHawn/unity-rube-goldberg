@@ -13,12 +13,13 @@ public class BallScript_1_ : MonoBehaviour {
     public GameObject collectible1;
     public GameObject resetBall;
 
-
+    public AudioSource ground;
 
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Ground"))
         {
+            ground.Play();
             Destroy(gameObject);
             Instantiate(resetBall, ballInstantiate.transform.position, Quaternion.identity);
             //Instantiate(resetBall, ballInstantiate.ballPos, Quaternion.identity);
