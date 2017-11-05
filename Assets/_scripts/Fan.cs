@@ -19,15 +19,16 @@ public class Fan : MonoBehaviour {
 
     private void OnCollisionEnter(Collision col)
     {
-
         if (col.gameObject.CompareTag("Ball"))
         {
+            Debug.Log("fan collision");
             col.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * air);
         }
 
     }
 
     /*
+    //if using trigger
     private void OnTriggerStay(Collider other)
     {
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();

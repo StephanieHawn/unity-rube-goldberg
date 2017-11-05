@@ -10,8 +10,7 @@ public class Trampoline : MonoBehaviour {
 
         if (col.gameObject.CompareTag("Ball"))
         {
-            Debug.Log("Hit");
-            Debug.Log("The Ball is forced");
+            Debug.Log("trampoline collision");
             col.gameObject.GetComponent<Rigidbody>().AddForce(0, 5, 0, ForceMode.Impulse);
         }
         

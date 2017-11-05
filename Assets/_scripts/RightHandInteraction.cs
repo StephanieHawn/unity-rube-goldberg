@@ -13,14 +13,15 @@ public class RightHandInteraction : MonoBehaviour
     public Vector3 ballPos;
 
     //Swipe
-    private float swipeSum;
-    private float touchLast;
-    private float touchCurrent;
-    private float distance;
+    private float swipeSum_x;
+    private float touchLast_x;
+    private float touchLast_y;
+    private float touchCurrent_x;
+    private float distance_x;
     private bool hasSwipedLeft;
     private bool hasSwipedRight;
     public ObjectMenuManager objectMenuManager;
-    //public GameObject objMenu;
+    public GameObject objMenu;
 
     // Use this for initialization
     void Start()
@@ -39,26 +40,27 @@ public class RightHandInteraction : MonoBehaviour
             //SteamVR_LoadLevel.Begin("Teleport");
 
             //reset position of finger to 0, 0 (I think)
-            touchLast = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
+            touchLast_x = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
+            touchLast_y = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
         }
 
         //detect when our user is toucing the touchpad
         if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            //objMenu.SetActive(true);
+            objMenu.SetActive(true);
 
-            touchCurrent = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
+            touchCurrent_x = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
             //how much did the finger move this frame?
-            distance = touchCurrent - touchLast;
+            distance_x = touchCurrent_x - touchLast_x;
             //cache our fingers location so we know where it was last frame
-            touchLast = touchCurrent;
+            touchLast_x = touchCurrent_x;
             //add the distance travelled to the swipeSum variable
-            swipeSum += distance;
+            swipeSum_x += distance_x;
             if (!hasSwipedRight)
             {
-                if (swipeSum > 0.5f)
+                if (swipeSum_x > 0.5f)
                 {
-                    swipeSum = 0;
+                    swipeSum_x = 0;
                     SwipeLeft();
                     hasSwipedRight = true;
                     hasSwipedLeft = false;
@@ -67,9 +69,9 @@ public class RightHandInteraction : MonoBehaviour
 
             if (!hasSwipedLeft)
             {
-                if (swipeSum < -0.5f)
+                if (swipeSum_x < -0.5f)
                 {
-                    swipeSum = 0;
+                    swipeSum_x = 0;
                     SwipeRight();
                     hasSwipedLeft = true;
                     hasSwipedRight = false;
@@ -79,11 +81,11 @@ public class RightHandInteraction : MonoBehaviour
         }
         if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            //objMenu.SetActive(false);
+            objMenu.SetActive(false);
 
-            swipeSum = 0;
-            touchCurrent = 0;
-            touchLast = 0;
+            swipeSum_x = 0;
+            touchCurrent_x = 0;
+            touchLast_x = 0;
             hasSwipedLeft = false;
             hasSwipedRight = false;
         }
@@ -110,12 +112,12 @@ public class RightHandInteraction : MonoBehaviour
     void SwipeLeft()
     {
         objectMenuManager.Menuforwards();
-        Debug.Log("Swiped Left");
+        //Debug.Log("Swiped Left");
     }
     void SwipeRight()
     {
         objectMenuManager.Menubackwards();
-        Debug.Log("Swiped Right");
+        //Debug.Log("Swiped Right");
     }
 
     private void OnTriggerStay(Collider col)
