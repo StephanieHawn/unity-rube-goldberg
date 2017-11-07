@@ -13,7 +13,7 @@ Advance through 4 levels of increasing difficulty by solving physics-based puzzl
  * Open project in Unity 2017.2.0f3
  
 ## Build
- * See Build folder for .exe file
+ * See Build folder for .exe file (only use editor for submission)
  
  ## Audio
  * "Goal" sound created by [univ_lyon3](http://freesound.org/people/univ_lyon3/sounds/250591/)
