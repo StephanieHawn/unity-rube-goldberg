@@ -15,6 +15,8 @@ public class Teleportation_left : MonoBehaviour {
     public LayerMask laserMask;
     public float yNudgeAmount = 1f; //specific to teleportAimerObject height
     public float moveDistance = 5f;
+    public GameObject Ball;
+    public Material ballMat;
 
 
     // Use this for initialization
@@ -28,8 +30,14 @@ public class Teleportation_left : MonoBehaviour {
     void Update()
     {
         device = SteamVR_Controller.Input((int)trackedObj.index);
+        if (RightHandInteraction.holdingBall && device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
+        {
+            Ball.GetComponent<Renderer>().material.color = Color.red;
+        }
+
         if(!RightHandInteraction.holdingBall)
         {
+            Ball.GetComponent<Renderer>().material = ballMat;
             if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
             {
                 laser.gameObject.SetActive(true);
