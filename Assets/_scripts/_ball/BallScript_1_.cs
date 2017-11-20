@@ -20,8 +20,9 @@ public class BallScript_1_ : MonoBehaviour {
         if (col.gameObject.CompareTag("Ground"))
         {
             ground.Play();
-            Destroy(gameObject);
-            Instantiate(resetBall, ballInstantiate.transform.position, Quaternion.identity);
+            gameObject.transform.position = ballInstantiate.transform.position;
+            //Destroy(gameObject);
+            //Instantiate(resetBall, ballInstantiate.transform.position, Quaternion.identity);
             //Instantiate(resetBall, ballInstantiate.ballPos, Quaternion.identity);
             collectible.SetActive(true);
             collectible1.SetActive(true);
@@ -42,8 +43,9 @@ public class BallScript_1_ : MonoBehaviour {
             }
             else
             {
-                Destroy(gameObject);
-                Instantiate(resetBall, ballInstantiate.transform.position, Quaternion.identity);
+                //Destroy(gameObject);
+                //Instantiate(resetBall, ballInstantiate.transform.position, Quaternion.identity);
+                gameObject.transform.position = ballInstantiate.transform.position;
                 collectible.SetActive(true);
                 //SteamVR_LoadLevel.Begin("Level1");
                 winState = false;

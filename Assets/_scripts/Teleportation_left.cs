@@ -30,14 +30,17 @@ public class Teleportation_left : MonoBehaviour {
     void Update()
     {
         device = SteamVR_Controller.Input((int)trackedObj.index);
+        /*
         if (RightHandInteraction.holdingBall && device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
         {
             Ball.GetComponent<Renderer>().material.color = Color.red;
         }
+        */
 
+        /*
         if(!RightHandInteraction.holdingBall)
-        {
-            Ball.GetComponent<Renderer>().material = ballMat;
+        {*/
+            //Ball.GetComponent<Renderer>().material = ballMat;
             if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
             {
                 laser.gameObject.SetActive(true);
@@ -87,7 +90,13 @@ public class Teleportation_left : MonoBehaviour {
                 //move instantly
                 player.transform.position = teleportLocation;
             }
-        }
+            /*
+            if (teleportLocation.z > .07 || teleportLocation.x > 2.50)
+            {
+                Ball.SetActive(false);
+            }
+            */
+        //}
     }
 
 
